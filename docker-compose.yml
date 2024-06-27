@@ -1,0 +1,63 @@
+version: '3.9'
+
+# Services
+services:
+  # Backend service
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: backend
+    ports:
+      - "5555:5555"
+
+    environment:
+      - PORT=5555
+      - mongoDBURL=mongodb+srv://root:ImaUde*.7849@onlineherblincosmeticss.k59x0lm.mongodb.net/cosmetics-collection?retryWrites=true&w=majority
+    # volumes:
+    #   - ./backend:/usr/src/app
+    # networks:
+    #   - mern-stack
+    # depends_on:
+    #   - mongo
+
+  # Frontend service
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+
+    container_name: frontend
+    ports:
+      - "5173:5173"
+    # volumes:
+    #   - ./frontend:/usr/src/app
+    environment:
+      - VITE_API_URL=http://localhost:5555
+    # networks:
+    #   - mern-stack
+    depends_on:
+      - backend
+
+  # Database service
+  mongo:
+    image: mongo:latest
+    container_name: mongodb_server
+
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=root
+      - MONGO_INITDB_ROOT_PASSWORD=ImaUde*.7849
+
+    ports:
+      - "27017:27017"
+
+    # networks:
+    #   - mern-stack
+    # volumes:
+    #   - mongo-data:/data/db
+
+# networks:
+#   mern-stack:
+
+# volumes:
+#   mongo-data:

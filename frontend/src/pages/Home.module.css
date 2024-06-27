@@ -1,0 +1,7 @@
+.bg{
+    background-image: url(/src/Images/wallpaper1.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    padding-bottom: 16rem ;
+}
