@@ -7,7 +7,7 @@ services:
     build:
       context: ./backend
       dockerfile: Dockerfile
-    container_name: backend
+    # container_name: backend
     ports:
       - "5555:5555"
 
@@ -27,7 +27,7 @@ services:
       context: ./frontend
       dockerfile: Dockerfile
 
-    container_name: frontend
+    # container_name: frontend
     ports:
       - "5173:5173"
     # volumes:
@@ -42,7 +42,7 @@ services:
   # Database service
   mongo:
     image: mongo:latest
-    container_name: mongodb_server
+    # container_name: mongodb_server
 
     environment:
       - MONGO_INITDB_ROOT_USERNAME=root
